@@ -1,0 +1,63 @@
+<h3 class="underlined">Checkin</h3>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="isbn" class="col-xs-3 text-right">ISBN</label>
+        <div class="col-xs-6">
+          <input class="form-control" name="isbn" ng-model="formData.isbn" placeholder="0195153448" type="text">
+        </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary btn-block" ng-click="searchByISBN()" type="submit">Search</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="cardNo" class="col-xs-3 text-right">Card Number</label>
+        <div class="col-xs-6">
+          <input class="form-control" name="cardNo" ng-model="formData.cardNo" placeholder="ID000001" type="text">
+        </div>
+        <div class="col-xs-3">
+          <button class="btn btn-primary btn-block" ng-click="searchByCardNo()" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<br>
+<br>
+<div ng-show="isLoading" class="loader">
+  <img src="assets/ajax-loader.gif" alt="Loading...">
+</div>
+<div ng-if="tableParams != undefined">
+  <div ng-show="isTableEmpty()">
+    <h5 class="text-center">No Search results</h5>
+  </div>
+  <div ng-hide="isTableEmpty()">
+    <div class="row">
+      <div class="col-xs-12">
+        <table ng-table="tableParams" class="table table-striped table-bordered" show-filter="false">
+          <tr ng-repeat="loan in $data">
+            <td title="'Loan Id'" filter="{ loanId: 'text'}" sortable="'loanId'">
+              {{loan.loanId}}
+            </td>
+            <td title="'Date In'" filter="{ dateIn: 'text'}" sortable="'dateIn'">
+              {{loan.dateIn}}
+            </td>
+            <td title="'Date Out'" filter="{ dateOut: 'text'}" sortable="'dateOut'">
+              {{loan.dateOut}}
+            </td>
+            <td title="'Card Number'" filter="{ cardNo: 'text'}" sortable="'cardNo'">
+              {{loan.cardNo}}
+            </td>
+            <td title="'Book Id'" filter="{ bookId: 'text'}" sortable="'bookId'">
+              {{loan.bookId}}
+            </td>
+            <td title="'Checkin'">
+              <button type="button" ng-click="checkin(loan)" class="btn btn-sm btn-primary">Checkin</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

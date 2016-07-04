@@ -17,17 +17,26 @@ angular.module('myApp.bookSearch')
       validate($scope.formData, function(formData) {
         var params = $httpParamSerializer(formData);
         Borrower.create(params).success(function(data) {
+          $scope.isLoading = false;
           alertify.success('Created borrower ' + formData.firstName);
           $scope.formData = {};
         }).error(function(err, status) {
+          $scope.isLoading = false;
           alertify.error(err);
         });
       }, function(err) {
+        $scope.isLoading = false;
         alertify.error(err);
       });
     };
 
     var validate = function(formData, success, err) {
+
+      if (formData.firstName == undefined || formData.lastName == undefined || formData.ssn == undefined ||
+        formData.address == undefined || formData.cardNo == undefined) {
+        return err('Mandatory fields are missing');
+      }
+
       for (key in formData) {
         var field = formData[key];
         if (typeof field === 'string' && field.trim() == '') {
