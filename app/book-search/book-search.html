@@ -37,7 +37,7 @@
 <br>
 <br>
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-xs-10 col-xs-offset-1">
     <table ng-table="tableParams" class="table table-striped table-bordered" show-filter="false">
       <tr ng-repeat="book in $data">
         <td title="'ISBN'" filter="{ isbn: 'text'}" sortable="'isbn'">
@@ -56,7 +56,9 @@
           {{book.branchId}}
         </td>
         <td title="'Checkout'">
-          {{book.availability}}
+          <div ng-show="isAvailable(book.availability)" class="text-center">
+            <a href="#" ng-click="$event.preventDefault(); selected.book = book" class="btn btn-sm btn-primary">Checkout</a>
+          </div>
         </td>
       </tr>
     </table>

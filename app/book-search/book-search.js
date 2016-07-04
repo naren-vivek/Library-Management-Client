@@ -25,6 +25,10 @@ angular.module('myApp.bookSearch', ['ngRoute'])
       dataset: []
     };
 
+    $scope.isAvailable = function(availability) {
+      return availability == 1;
+    };
+
     $scope.search = function() {
       if ($scope.formData.isbn != undefined && $scope.formData.title != undefined &&
         $scope.formData.author != undefined && $scope.formData.branch != undefined) {
@@ -44,12 +48,12 @@ angular.module('myApp.bookSearch', ['ngRoute'])
         "availability": 0
       },
       {
-        "isbn": "0195153448",
+        "isbn": "0195153449",
         "title": "Classical Mythology",
         "author": "Mark P. O. Morford",
         "bookId": 1,
         "branchId": 1,
-        "availability": 0
+        "availability": 1
       }];
 
       initialSettings.dataset = data;
