@@ -18,7 +18,7 @@ angular.module('myApp.bookSearch')
           $uibModalInstance.close();
         }).error(function(err, status) {
           $scope.isLoading = false;
-          alertify.error(err.message);
+          alertify.error(err);
         });
       } else {
         $scope.isLoading = false;

@@ -51,15 +51,20 @@ h3.underlined:after {
 
 input[type],
 input[type]:active,
-input[type]:focus {
+input[type]:focus,
+textarea,
+textarea:active,
+textarea:focus {
   font-weight: 300;
   border: 1px solid #CCC;
-  box-shadow: none;
-  outline: none;
+  box-shadow: none !important;
+  outline: none !important;
 }
 
 input[type]:active,
-input[type]:focus {
+input[type]:focus,
+textarea:active,
+textarea:focus {
   border: 1px solid #909090 !important;
 }
 
@@ -79,4 +84,12 @@ table {
 .loader > img {
   width: 25px;
   height: 25px;
+}
+
+.modal-backdrop {
+  z-index: 99;
+}
+
+.modal {
+  z-index: 100;
 }

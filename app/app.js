@@ -13,7 +13,8 @@ angular.module('myApp', [
 constant('config', {
   url: 'http://f122ad23.ngrok.io',
   bookSearchURL: 'http://f122ad23.ngrok.io/bookSearch/search',
-  checkoutURL: 'http://f122ad23.ngrok.io/bookloan/checkout'
+  checkoutURL: 'http://f122ad23.ngrok.io/bookloan/checkout',
+  borrowerURL: 'http://f122ad23.ngrok.io/borrower/addBorrower'
 }).
 
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
