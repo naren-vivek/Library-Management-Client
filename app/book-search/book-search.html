@@ -1,1 +1,36 @@
 <h3 class="underlined">Book Search</h3>
+<div class="row">
+  <div class="col-xs-6 col-xs-offset-3">
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label for="isbn" class="col-xs-4 text-right">ISBN</label>
+        <div class="col-xs-8">
+          <input class="form-control" name="isbn" ng-model="bookSearch.isbn" placeholder="ISBN" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="title" class="col-xs-4 text-right">Title</label>
+        <div class="col-xs-8">
+          <input class="form-control" name="title" ng-model="bookSearch.title" placeholder="Title" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="author" class="col-xs-4 text-right">Author</label>
+        <div class="col-xs-8">
+          <input class="form-control" name="author" ng-model="bookSearch.author" placeholder="Author" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location" class="col-xs-4 text-right">Location</label>
+        <div class="col-xs-8">
+          <input class="form-control" name="location" ng-model="bookSearch.location" placeholder="Location" type="text">
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-xs-8 col-xs-offset-4">
+          <button class="btn btn-primary btn-block" ng-click="search()" type="submit">Search</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

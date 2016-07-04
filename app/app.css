@@ -42,5 +42,23 @@ h3.underlined:after {
   height: 1px;
   width: 25px;
   display: block;
-  margin: 10px auto 50px;
+  margin: 10px auto 20px;
+}
+
+.form-horizontal label {
+  margin-top: 7px;
+}
+
+input[type],
+input[type]:active,
+input[type]:focus {
+  font-weight: 300;
+  border: 1px solid #CCC;
+  box-shadow: none;
+  outline: none;
+}
+
+input[type]:active,
+input[type]:focus {
+  border: 1px solid #909090 !important;
 }
