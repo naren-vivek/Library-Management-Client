@@ -14,6 +14,7 @@
     "angular-bootstrap": "latest",
     "angular-animate": "latest",
     "angular-touch": "latest",
-    "bootstrap": "latest"
+    "bootstrap": "latest",
+    "ng-table": "~1.0.0"
   }
 }
