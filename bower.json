@@ -15,6 +15,7 @@
     "angular-animate": "latest",
     "angular-touch": "latest",
     "bootstrap": "latest",
-    "ng-table": "~1.0.0"
+    "ng-table": "~1.0.0",
+    "alertifyjs": "~1.0.11"
   }
 }

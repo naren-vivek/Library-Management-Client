@@ -6,7 +6,8 @@ angular.module('myApp', [
   'myApp.bookSearch',
   'myApp.version',
   'ui.bootstrap',
-  'ngTable'
+  'ngTable',
+  'bookSearchService'
 ]).
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');

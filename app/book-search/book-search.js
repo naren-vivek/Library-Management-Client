@@ -9,6 +9,10 @@ angular.module('myApp.bookSearch', ['ngRoute'])
   });
 }])
 
-.controller('BookSearchCtrl', [function() {
+.controller('BookSearchCtrl', ['$scope', '$http', function($scope, $http) {
+  $scope.formData = {};
 
+  $scope.search = function() {
+
+  };
 }]);
