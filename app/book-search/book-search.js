@@ -31,6 +31,10 @@ angular.module('myApp.bookSearch', ['ngRoute'])
       return availability == 1;
     };
 
+    $scope.isTableEmpty = function() {
+      return $scope.tableParams.data.length == 0;
+    };
+
     $scope.search = function() {
       validate($scope.formData, function() {
         var params = $httpParamSerializer($scope.formData);

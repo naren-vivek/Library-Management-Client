@@ -36,31 +36,38 @@
 </div>
 <br>
 <br>
-<div class="row">
-  <div class="col-xs-12">
-    <table ng-table="tableParams" class="table table-striped table-bordered" show-filter="false">
-      <tr ng-repeat="book in $data">
-        <td title="'ISBN'" filter="{ isbn: 'text'}" sortable="'isbn'">
-          {{book.isbn}}
-        </td>
-        <td title="'Title'" filter="{ title: 'text'}" sortable="'title'">
-          {{book.title}}
-        </td>
-        <td title="'Author'" filter="{ author: 'text'}" sortable="'author'">
-          {{book.author}}
-        </td>
-        <td title="'Book Id'" filter="{ bookId: 'number'}" sortable="'bookId'">
-          {{book.bookId}}
-        </td>
-        <td title="'Branch Id'" filter="{ branchId: 'number'}" sortable="'branchId'">
-          {{book.branchId}}
-        </td>
-        <td title="'Checkout'">
-          <div ng-show="isAvailable(book.availability)" class="text-center">
-            <button type="button" ng-click="open(book)" class="btn btn-sm btn-primary">Checkout</button>
-          </div>
-        </td>
-      </tr>
-    </table>
+<div ng-if="tableParams != undefined">
+  <div ng-show="isTableEmpty()">
+    <h5 class="text-center">No Search results</h5>
+  </div>
+  <div ng-hide="isTableEmpty()">
+    <div class="row">
+      <div class="col-xs-12">
+        <table ng-table="tableParams" class="table table-striped table-bordered" show-filter="false">
+          <tr ng-repeat="book in $data">
+            <td title="'ISBN'" filter="{ isbn: 'text'}" sortable="'isbn'">
+              {{book.isbn}}
+            </td>
+            <td title="'Title'" filter="{ title: 'text'}" sortable="'title'">
+              {{book.title}}
+            </td>
+            <td title="'Author'" filter="{ author: 'text'}" sortable="'author'">
+              {{book.author}}
+            </td>
+            <td title="'Book Id'" filter="{ bookId: 'number'}" sortable="'bookId'">
+              {{book.bookId}}
+            </td>
+            <td title="'Branch Id'" filter="{ branchId: 'number'}" sortable="'branchId'">
+              {{book.branchId}}
+            </td>
+            <td title="'Checkout'">
+              <div ng-show="isAvailable(book.availability)" class="text-center">
+                <button type="button" ng-click="open(book)" class="btn btn-sm btn-primary">Checkout</button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
   </div>
 </div>
