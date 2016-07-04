@@ -12,6 +12,9 @@
   </form>
 </div>
 <div class="modal-footer">
+  <div ng-show="isLoading" class="loader">
+    <img src="assets/ajax-loader.gif" alt="Loading...">
+  </div>
   <button class="btn btn-primary" type="button" ng-click="checkout()">Checkout</button>
   <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>
