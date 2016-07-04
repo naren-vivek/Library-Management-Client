@@ -9,21 +9,24 @@ angular.module('myApp.bookSearch', ['ngRoute'])
   });
 }])
 
-.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', function($scope, $http, Search, alertify) {
+.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', '$httpParamSerializer', function($scope, $http, Search, alertify, $httpParamSerializer) {
   $scope.formData = {};
 
   $scope.search = function() {
-    if ($scope.formData.isbn == undefined && $scope.formData.title == undefined &&
-      $scope.formData.author == undefined && $scope.formData.location == undefined) {
-      alertify.error('You need to provide atleast one search criteria');
+    if ($scope.formData.isbn != undefined && $scope.formData.title != undefined &&
+      $scope.formData.author != undefined && $scope.formData.branch != undefined) {
+      var params = $httpParamSerializer($scope.formData);
+      Search.search(params);
+    } else {
+      alertify.error('All fields are mandatory');
     }
   };
 }])
 
-.factory('Search', ['$http', function($http) {
+.factory('Search', ['$http', 'config', function($http, config) {
   return {
-    search: function() {
-      return $http.get('/api/food');
+    search: function(params) {
+      return $http.get(config.bookSearchURL + '?' + params);
     }
   }
 }]);

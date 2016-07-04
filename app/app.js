@@ -9,6 +9,12 @@ angular.module('myApp', [
   'ngAlertify',
   'myApp.bookSearch'
 ]).
+
+constant('config', {
+  url: 'http://localhost:8080/',
+  bookSearchURL: 'http://localhost:8080/bookSearch/search'
+}).
+
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
