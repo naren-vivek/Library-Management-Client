@@ -34,3 +34,31 @@
     </form>
   </div>
 </div>
+<br>
+<br>
+<div class="row">
+  <div class="col-xs-12">
+    <table ng-table="tableParams" class="table table-striped table-bordered" show-filter="false">
+      <tr ng-repeat="book in $data">
+        <td title="'ISBN'" filter="{ isbn: 'text'}" sortable="'isbn'">
+          {{book.isbn}}
+        </td>
+        <td title="'Title'" filter="{ title: 'text'}" sortable="'title'">
+          {{book.title}}
+        </td>
+        <td title="'Author'" filter="{ author: 'text'}" sortable="'author'">
+          {{book.author}}
+        </td>
+        <td title="'Book Id'" filter="{ bookId: 'number'}" sortable="'bookId'">
+          {{book.bookId}}
+        </td>
+        <td title="'Branch Id'" filter="{ branchId: 'number'}" sortable="'branchId'">
+          {{book.branchId}}
+        </td>
+        <td title="'Checkout'">
+          {{book.availability}}
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>

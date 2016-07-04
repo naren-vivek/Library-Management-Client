@@ -9,19 +9,54 @@ angular.module('myApp.bookSearch', ['ngRoute'])
   });
 }])
 
-.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', '$httpParamSerializer', function($scope, $http, Search, alertify, $httpParamSerializer) {
-  $scope.formData = {};
+.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', '$httpParamSerializer', 'NgTableParams',
+  function($scope, $http, Search, alertify, $httpParamSerializer, NgTableParams) {
+    $scope.formData = {};
 
-  $scope.search = function() {
-    if ($scope.formData.isbn != undefined && $scope.formData.title != undefined &&
-      $scope.formData.author != undefined && $scope.formData.branch != undefined) {
-      var params = $httpParamSerializer($scope.formData);
-      Search.search(params);
-    } else {
-      alertify.error('All fields are mandatory');
-    }
-  };
-}])
+    var initialParams = {
+      count: 15 // initial page size
+    };
+    var initialSettings = {
+      // page size buttons (right set of buttons in demo)
+      counts: [],
+      // determines the pager buttons (left set of buttons in demo)
+      paginationMaxBlocks: 13,
+      paginationMinBlocks: 2,
+      dataset: []
+    };
+
+    $scope.search = function() {
+      if ($scope.formData.isbn != undefined && $scope.formData.title != undefined &&
+        $scope.formData.author != undefined && $scope.formData.branch != undefined) {
+        var params = $httpParamSerializer($scope.formData);
+        Search.search(params);
+      } else {
+        alertify.error('All fields are mandatory');
+      }
+
+      var data = [
+      {
+        "isbn": "0195153448",
+        "title": "Classical Mythology",
+        "author": "Mark P. O. Morford",
+        "bookId": 1,
+        "branchId": 1,
+        "availability": 0
+      },
+      {
+        "isbn": "0195153448",
+        "title": "Classical Mythology",
+        "author": "Mark P. O. Morford",
+        "bookId": 1,
+        "branchId": 1,
+        "availability": 0
+      }];
+
+      initialSettings.dataset = data;
+      $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+    };
+  }
+])
 
 .factory('Search', ['$http', 'config', function($http, config) {
   return {
