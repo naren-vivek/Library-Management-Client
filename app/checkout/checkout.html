@@ -2,9 +2,16 @@
   <h3 class="modal-title">Checkout</h3>
 </div>
 <div class="modal-body">
-  <h4>{{book.isbn}}</h4>
+  <form class="form-horizontal">
+    <div class="form-group">
+      <label for="cardNo" class="col-xs-3">Card Number</label>
+      <div class="col-xs-9">
+        <input type="text" class="form-control" name="cardNo" ng-model="formData.cardNo" placeholder="ID123456" type="text">
+      </div>
+    </div>
+  </form>
 </div>
 <div class="modal-footer">
-  <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+  <button class="btn btn-primary" type="button" ng-click="checkout()">Checkout</button>
   <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
 </div>

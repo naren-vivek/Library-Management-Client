@@ -1,14 +1,15 @@
 'use strict';
 
-angular.module('myApp.checkoutBook', ['ngRoute'])
-
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/checkout', {
-    templateUrl: 'checkout/checkout.html',
-    controller: 'CheckoutCtrl'
-  });
-}])
+angular.module('myApp.bookSearch')
 
 .controller('CheckoutCtrl', ['$scope', '$uibModalInstance', 'book', function($scope, $uibModalInstance, book) {
   $scope.book = book;
+
+  $scope.checkout = function() {
+    $uibModalInstance.close();
+  };
+
+  $scope.cancel = function() {
+    $uibModalInstance.dismiss('cancel');
+  };
 }]);

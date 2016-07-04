@@ -7,8 +7,7 @@ angular.module('myApp', [
   'ui.bootstrap',
   'ngTable',
   'ngAlertify',
-  'myApp.bookSearch',
-  'myApp.checkoutBook'
+  'myApp.bookSearch'
 ]).
 
 constant('config', {
