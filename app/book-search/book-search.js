@@ -14,6 +14,7 @@ angular.module('myApp.bookSearch', ['ngRoute'])
     $scope.formData = {};
     $scope.selectedBook = undefined;
     $scope.animationsEnabled = true;
+    $scope.isLoading = false;
 
     var initialParams = {
       count: 15 // initial page size
@@ -22,7 +23,7 @@ angular.module('myApp.bookSearch', ['ngRoute'])
       // page size buttons (right set of buttons in demo)
       counts: [],
       // determines the pager buttons (left set of buttons in demo)
-      paginationMaxBlocks: 13,
+      paginationMaxBlocks: 10,
       paginationMinBlocks: 2,
       dataset: []
     };
@@ -36,21 +37,24 @@ angular.module('myApp.bookSearch', ['ngRoute'])
     };
 
     $scope.search = function() {
+      $scope.isLoading = true;
       validate($scope.formData, function() {
         var params = $httpParamSerializer($scope.formData);
         Search.search(params).success(function(data) {
+          $scope.isLoading = false;
           initialSettings.dataset = data;
           $scope.tableParams = new NgTableParams(initialParams, initialSettings);
         }).error(function(err, status) {
+          $scope.isLoading = false;
           alertify.error(err.message);
         });
       }, function(err) {
+        $scope.isLoading = false;
         alertify.error(err);
       });
     };
 
     $scope.open = function(selectedBook) {
-
       $scope.selectedBook = selectedBook;
 
       var modalInstance = $uibModal.open({
@@ -73,7 +77,6 @@ angular.module('myApp.bookSearch', ['ngRoute'])
     };
 
     var validate = function(formData, success, err) {
-
       if (formData.isbn == undefined || formData.title == undefined ||
         formData.author == undefined || formData.branch == undefined) {
         return err('All fields are mandatory');
@@ -86,7 +89,7 @@ angular.module('myApp.bookSearch', ['ngRoute'])
         }
       }
 
-      success();
+      return success();
     };
   }
 ])

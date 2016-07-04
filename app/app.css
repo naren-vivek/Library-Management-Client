@@ -71,3 +71,12 @@ table {
 .ng-table-pager {
   text-align: center;
 }
+
+.loader {
+  text-align: center;
+}
+
+.loader > img {
+  width: 25px;
+  height: 25px;
+}

@@ -36,6 +36,9 @@
 </div>
 <br>
 <br>
+<div ng-show="isLoading" class="loader">
+  <img src="assets/ajax-loader.gif" alt="Loading...">
+</div>
 <div ng-if="tableParams != undefined">
   <div ng-show="isTableEmpty()">
     <h5 class="text-center">No Search results</h5>
