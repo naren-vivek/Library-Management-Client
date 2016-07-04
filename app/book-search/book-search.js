@@ -9,9 +9,10 @@ angular.module('myApp.bookSearch', ['ngRoute'])
   });
 }])
 
-.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', '$httpParamSerializer', 'NgTableParams',
-  function($scope, $http, Search, alertify, $httpParamSerializer, NgTableParams) {
+.controller('BookSearchCtrl', ['$scope', '$http', 'Search', 'alertify', '$httpParamSerializer', 'NgTableParams', '$uibModal',
+  function($scope, $http, Search, alertify, $httpParamSerializer, NgTableParams, $uibModal) {
     $scope.formData = {};
+    $scope.selectedBook = undefined;
 
     var initialParams = {
       count: 15 // initial page size
@@ -58,6 +59,26 @@ angular.module('myApp.bookSearch', ['ngRoute'])
 
       initialSettings.dataset = data;
       $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+    };
+
+    $scope.open = function(selectedBook) {
+      $scope.selectedBook = selectedBook;
+      var modalInstance = $uibModal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'checkout/checkout.html',
+        controller: 'CheckoutCtrl',
+        resolve: {
+          book: function() {
+            return $scope.selectedBook;
+          }
+        }
+      });
+
+      modalInstance.result.then(function(updatedBook) {
+        $scope.updatedBook = updatedBook;
+      }, function() {
+
+      });
     };
   }
 ])

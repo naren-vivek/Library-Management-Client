@@ -57,7 +57,7 @@
         </td>
         <td title="'Checkout'">
           <div ng-show="isAvailable(book.availability)" class="text-center">
-            <a href="#" ng-click="$event.preventDefault(); selected.book = book" class="btn btn-sm btn-primary">Checkout</a>
+            <a href="#" ng-click="open(book)" class="btn btn-sm btn-primary">Checkout</a>
           </div>
         </td>
       </tr>
