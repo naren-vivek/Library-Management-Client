@@ -12,7 +12,8 @@ angular.module('myApp', [
 
 constant('config', {
   url: 'http://f122ad23.ngrok.io',
-  bookSearchURL: 'http://f122ad23.ngrok.io/bookSearch/search'
+  bookSearchURL: 'http://f122ad23.ngrok.io/bookSearch/search',
+  checkoutURL: 'http://f122ad23.ngrok.io/bookloan/checkout'
 }).
 
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

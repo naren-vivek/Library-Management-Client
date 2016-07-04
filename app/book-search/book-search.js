@@ -70,9 +70,8 @@ angular.module('myApp.bookSearch', ['ngRoute'])
 
       modalInstance.result.then(function() {
         $scope.selectedBook.availability = 0;
-        alertify.success('Book updated');
       }, function() {
-        console.log('failed');
+
       });
     };
 
