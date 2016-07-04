@@ -11,8 +11,8 @@ angular.module('myApp', [
 ]).
 
 constant('config', {
-  url: 'http://localhost:8080/',
-  bookSearchURL: 'http://localhost:8080/bookSearch/search'
+  url: 'http://f122ad23.ngrok.io',
+  bookSearchURL: 'http://f122ad23.ngrok.io/bookSearch/search'
 }).
 
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {

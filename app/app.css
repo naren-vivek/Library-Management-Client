@@ -62,3 +62,12 @@ input[type]:active,
 input[type]:focus {
   border: 1px solid #909090 !important;
 }
+
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+
+.ng-table-pager {
+  text-align: center;
+}

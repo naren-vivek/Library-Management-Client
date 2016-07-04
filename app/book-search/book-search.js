@@ -32,34 +32,17 @@ angular.module('myApp.bookSearch', ['ngRoute'])
     };
 
     $scope.search = function() {
-      if ($scope.formData.isbn != undefined && $scope.formData.title != undefined &&
-        $scope.formData.author != undefined && $scope.formData.branch != undefined) {
+      validate($scope.formData, function() {
         var params = $httpParamSerializer($scope.formData);
-        Search.search(params);
-      } else {
-        alertify.error('All fields are mandatory');
-      }
-
-      var data = [
-      {
-        "isbn": "0195153448",
-        "title": "Classical Mythology",
-        "author": "Mark P. O. Morford",
-        "bookId": 1,
-        "branchId": 1,
-        "availability": 0
-      },
-      {
-        "isbn": "0195153449",
-        "title": "Classical Mythology",
-        "author": "Mark P. O. Morford",
-        "bookId": 1,
-        "branchId": 1,
-        "availability": 1
-      }];
-
-      initialSettings.dataset = data;
-      $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+        Search.search(params).success(function(data) {
+          initialSettings.dataset = data;
+          $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+        }).error(function(err, status) {
+          alertify.error(err.message);
+        });
+      }, function(err) {
+        alertify.error(err);
+      });
     };
 
     $scope.open = function(selectedBook) {
@@ -83,6 +66,23 @@ angular.module('myApp.bookSearch', ['ngRoute'])
       }, function() {
         console.log('failed');
       });
+    };
+
+    var validate = function(formData, success, err) {
+
+      if (formData.isbn == undefined || formData.title == undefined ||
+        formData.author == undefined || formData.branch == undefined) {
+        return err('All fields are mandatory');
+      }
+
+      for (var key in formData) {
+        var field = formData[key];
+        if (typeof field === 'string' && field.trim() == '') {
+          return err(key + ' is empty.');
+        }
+      }
+
+      success();
     };
   }
 ])
