@@ -19,7 +19,8 @@ constant('config', {
   searchByISBNURL: 'http://f122ad23.ngrok.io/bookloan/getActiveBooks',
   searchByCardNumberURL: 'http://f122ad23.ngrok.io/bookloan/getActiveBooksCardNum',
   getFinesURL: 'http://f122ad23.ngrok.io/borrower/fines',
-  payFineURL: 'http://f122ad23.ngrok.io/borrower/pay'
+  payFineURL: 'http://f122ad23.ngrok.io/borrower/pay',
+  overdueURL: 'http://f122ad23.ngrok.io/borrower/overdue',
 }).
 
 config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
