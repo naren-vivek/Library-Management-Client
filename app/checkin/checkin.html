@@ -8,7 +8,7 @@
           <input class="form-control" name="isbn" ng-model="isbn" placeholder="0195153448" type="text">
         </div>
         <div class="col-xs-3">
-          <button class="btn btn-primary btn-block" ng-click="searchByISBN()">Search by ISBN</button>
+          <button type="button" class="btn btn-primary btn-block" ng-click="searchByISBN()">Search by ISBN</button>
         </div>
       </div>
       <div class="form-group">
@@ -17,7 +17,7 @@
           <input class="form-control" name="cardNo" ng-model="cardNo" placeholder="ID000001" type="text">
         </div>
         <div class="col-xs-3">
-          <button class="btn btn-primary btn-block" ng-click="searchByCardNumber()">Search by Card No</button>
+          <button type="button" class="btn btn-primary btn-block" ng-click="searchByCardNumber()">Search by Card No</button>
         </div>
       </div>
     </form>
@@ -53,7 +53,7 @@
               {{loan.bookId}}
             </td>
             <td title="'Checkin'">
-              <button type="button" ng-click="checkin(loan)" class="btn btn-sm btn-primary">Checkin</button>
+              <button type="button" ng-show="loan.dateIn == undefined" ng-click="checkin(loan)" class="btn btn-sm btn-primary">Checkin</button>
             </td>
           </tr>
         </table>

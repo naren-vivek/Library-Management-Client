@@ -29,26 +29,36 @@ angular.module('myApp.bookSearch')
 
     $scope.searchByISBN = function() {
       $scope.isLoading = true;
-      BookCheckin.searchByISBN($scope.isbn).success(function(data) {
+      if ($scope.isbn == undefined || $scope.isbn.trim() == '') {
         $scope.isLoading = false;
-        initialSettings.dataset = data;
-        $scope.tableParams = new NgTableParams(initialParams, initialSettings);
-      }).error(function(err, status) {
-        $scope.isLoading = false;
-        alertify.error(err.message);
-      });
+        alertify.error('Search parameter isbn cant be blank');
+      } else {
+        BookCheckin.searchByISBN($scope.isbn).success(function(data) {
+          $scope.isLoading = false;
+          initialSettings.dataset = data;
+          $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+        }).error(function(err, status) {
+          $scope.isLoading = false;
+          alertify.error(err.message);
+        });
+      }
     };
 
     $scope.searchByCardNumber = function() {
       $scope.isLoading = true;
-      BookCheckin.searchByCardNumber($scope.cardNo).success(function(data) {
+      if ($scope.cardNo == undefined || $scope.cardNo.trim() == '') {
         $scope.isLoading = false;
-        initialSettings.dataset = data;
-        $scope.tableParams = new NgTableParams(initialParams, initialSettings);
-      }).error(function(err, status) {
-        $scope.isLoading = false;
-        alertify.error(err.message);
-      });
+        alertify.error('Search parameter cardNo cant be blank');
+      } else {
+        BookCheckin.searchByCardNumber($scope.cardNo).success(function(data) {
+          $scope.isLoading = false;
+          initialSettings.dataset = data;
+          $scope.tableParams = new NgTableParams(initialParams, initialSettings);
+        }).error(function(err, status) {
+          $scope.isLoading = false;
+          alertify.error(err.message);
+        });
+      }
     };
 
     $scope.checkin = function(loan) {
@@ -57,10 +67,10 @@ angular.module('myApp.bookSearch')
       formData.cardNo = loan.cardNo;
       var params = $httpParamSerializer(formData);
       BookCheckin.checkin(params).success(function(data) {
-        loan = data;
+        loan.dateIn = data[0].dateIn;
         alertify.success('Successfully checked in book');
       }).error(function(err, status) {
-        alertify.success(err);
+        alertify.error(err);
       });
     };
   }
