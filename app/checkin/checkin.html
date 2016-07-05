@@ -5,7 +5,7 @@
       <div class="form-group">
         <label for="isbn" class="col-xs-3 text-right">ISBN</label>
         <div class="col-xs-6">
-          <input class="form-control" name="isbn" ng-model="formData.isbn" placeholder="0195153448" type="text">
+          <input class="form-control" name="isbn" ng-model="isbn" placeholder="0195153448" type="text">
         </div>
         <div class="col-xs-3">
           <button class="btn btn-primary btn-block" ng-click="searchByISBN()" type="submit">Search</button>
@@ -14,10 +14,10 @@
       <div class="form-group">
         <label for="cardNo" class="col-xs-3 text-right">Card Number</label>
         <div class="col-xs-6">
-          <input class="form-control" name="cardNo" ng-model="formData.cardNo" placeholder="ID000001" type="text">
+          <input class="form-control" name="cardNo" ng-model="cardNo" placeholder="ID000001" type="text">
         </div>
         <div class="col-xs-3">
-          <button class="btn btn-primary btn-block" ng-click="searchByCardNo()" type="submit">Search</button>
+          <button class="btn btn-primary btn-block" ng-click="searchByCardNumber()" type="submit">Search</button>
         </div>
       </div>
     </form>
