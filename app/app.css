@@ -52,6 +52,9 @@ h3.underlined:after {
 input[type],
 input[type]:active,
 input[type]:focus,
+select,
+select:active,
+select:focus,
 textarea,
 textarea:active,
 textarea:focus {
@@ -63,6 +66,8 @@ textarea:focus {
 
 input[type]:active,
 input[type]:focus,
+select:active,
+select:focus,
 textarea:active,
 textarea:focus {
   border: 1px solid #909090 !important;
