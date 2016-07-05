@@ -15,6 +15,7 @@ constant('config', {
   bookSearchURL: 'http://f122ad23.ngrok.io/bookSearch/search',
   checkoutURL: 'http://f122ad23.ngrok.io/bookloan/checkout',
   borrowerURL: 'http://f122ad23.ngrok.io/borrower/addBorrower',
+  checkinURL: 'http://f122ad23.ngrok.io/bookloan/checkin',
   searchByISBNURL: 'http://f122ad23.ngrok.io/bookloan/getActiveBooks',
   searchByCardNumberURL: 'http://f122ad23.ngrok.io/bookloan/getActiveBooksCardNum'
 }).

@@ -50,6 +50,19 @@ angular.module('myApp.bookSearch')
         alertify.error(err.message);
       });
     };
+
+    $scope.checkin = function(loan) {
+      var formData = {};
+      formData.bookId = loan.bookId;
+      formData.cardNo = loan.cardNo;
+      var params = $httpParamSerializer(formData);
+      BookCheckin.checkin(params).success(function(data) {
+        loan = data;
+        alertify.success('Successfully checked in book');
+      }).error(function(err, status) {
+        alertify.success(err);
+      });
+    };
   }
 ])
 
@@ -62,7 +75,7 @@ angular.module('myApp.bookSearch')
       return $http.get(config.searchByCardNumberURL + '?cardNo=' + cardNo);
     },
     checkin: function(params) {
-      return $http.get(config.checkinURL + '?' + params);
+      return $http.post(config.checkinURL + '?' + params);
     }
   }
 }]);
